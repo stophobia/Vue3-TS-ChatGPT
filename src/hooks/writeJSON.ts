@@ -9,6 +9,6 @@ export async function downloadJsonData(data: Data, fileName: string): Promise<vo
     type: 'application/json;charset=utf-8',
   })
 
-  // 保存文件到本地
+  // ファイルをローカルに保存する
   saveAs(jsonBlob, `${fileName}.json`)
 }

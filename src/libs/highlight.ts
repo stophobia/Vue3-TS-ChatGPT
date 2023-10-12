@@ -8,7 +8,7 @@ const renderer = new Renderer()
 
 hljs.registerLanguage('javascript', javascript)
 
-// 以 $ 开始和结束的内联公式，以及以 $$ 开始和结束的块级公式
+// $ で始まり $ で終わるインライン数式、および $$ で始まり $$ で終わるブロックレベルの数式
 renderer.text = function(text) {
   if (text.startsWith('$') && text.endsWith('$')) {
     return `<span class='math'>${text.slice(1, -1)}</span>`
@@ -30,7 +30,7 @@ renderer.code = function(code, language) {
 }
 
 
-// 配置 marked
+// 構成 marked
 marked.setOptions({
   renderer: renderer,
   highlight: function(code, lang) {
@@ -42,7 +42,7 @@ marked.setOptions({
   }
 })
 
-// 导出 markedRender
+// 輸出 markedRender
 export const markedRender = (val: any) => {
   return marked(val)
 }

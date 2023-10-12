@@ -18,7 +18,7 @@ export async function fetchModels() {
     headers
   }).then((response) => {
     console.log(response.data)
-    // 保存数据到data
+    // データの保存先 data
     downloadJSON(response.data, 'models.json')
   }).catch((error) => {
     console.error(error)

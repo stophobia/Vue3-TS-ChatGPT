@@ -1,7 +1,7 @@
 import { decryptString, encryptString } from '@/libs/encryp'
 
 export const DECODER = new TextDecoder('utf-8')
-// 封装 localStorage
+// カプセル化 localStorage
 export const Storage = {
   get(key: string): string | null {
     return decryptString(window.localStorage.getItem(key))

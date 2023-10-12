@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-// 判断是否为移动端
+// モバイル端末かどうかを判断する
 export const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
 export const initMsg: ChatMessage[] = [
@@ -14,7 +14,7 @@ export const initMsg: ChatMessage[] = [
   },
   {
     role: 'assistant',
-    content: '你好，我是神奇海螺，欢迎提问'
+    content: 'こんにちは、魔法の巻き貝です。質問は大歓迎です。'
   }
 ]
 
@@ -24,10 +24,10 @@ export interface ChatMessage {
 }
 
 /**
- * 数据库名：ChatAppDB
- * 表名：chatRecords
- * 存储键名：chatRecordKey
- * 类的名称：ChatStorageManager
+ * データベース名：ChatAppDB
+ * テーブル名：chatRecords
+ * ストレージキー名：chatRecordKey
+ * クラス名：ChatStorageManager
  */
 
 export interface ChatMessage {
@@ -35,7 +35,7 @@ export interface ChatMessage {
   content: string;
 }
 
-// 聊天记录存储管理器
+// チャット履歴ストレージマネージャー
 export class ChatStorageManager {
   private static instance: ChatStorageManager
   private dbName: string = 'ChatAppDB'
@@ -53,7 +53,7 @@ export class ChatStorageManager {
     return ChatStorageManager.instance
   }
 
-  // 初始化 IndexedDB
+  // 初期化 IndexedDB
   private initDB(): Promise<IDBDatabase> {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(this.dbName, 1)
@@ -72,7 +72,7 @@ export class ChatStorageManager {
     })
   }
 
-  // 保存聊天记录
+  // チャット履歴を保存する
   public async saveChatRecord(data: ChatMessage[]): Promise<void> {
     if (this.isIndexedDBSupported) {
       const db = await this.initDB()
@@ -84,7 +84,7 @@ export class ChatStorageManager {
     }
   }
 
-  // 获取聊天记录
+  // チャット履歴を取得する
   public async getChatRecord(): Promise<ChatMessage[] | null> {
     if (this.isIndexedDBSupported) {
       const db = await this.initDB()
@@ -105,7 +105,7 @@ export class ChatStorageManager {
     }
   }
 
-  // 删除聊天记录
+  // チャット履歴を削除する
   public async deleteChatRecord(): Promise<void> {
     if (this.isIndexedDBSupported) {
       const db = await this.initDB()

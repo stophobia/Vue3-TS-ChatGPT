@@ -21,7 +21,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3456 // 指定端口号
+    port: 3456
   },
   resolve: {
     alias: {

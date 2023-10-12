@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import('@/views/home.vue')
     },
     {
-      path: '/:catchAll(.*)', // 使用动态参数和通配符
+      path: '/:catchAll(.*)',
       component: () => import('@/views/home.vue')
     }
   ]

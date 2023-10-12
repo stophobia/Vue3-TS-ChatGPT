@@ -29,29 +29,29 @@ export const scrollToBottom = (val: any) => {
 const copy = (copyText: string) => {
   navigator.clipboard.writeText(copyText).then(function () {
     ElMessage({
-      message: '已复制', type: 'success',
+      message: 'コピーされました', type: 'success',
     })
   }, function (err) {
-    console.error('无法复制文本: ', err)
+    console.error('テキストをコピーできません: ', err)
   })
 }
 
-// 初始化拷贝
+// コピーの初期化
 export const initCopy = () => {
   const copyText: any = document.getElementsByClassName('copyNode')
   let arr = Array.from(copyText)
   arr.forEach((v: any) => {
-    // 如果元素已经有一个 copyAction，那么首先移除它
+    // 要素に既に copyAction がある場合は、最初にそれを削除します
     if (v.copyAction) {
       v.removeEventListener('click', v.copyAction)
     }
 
-    // 创建一个新的 copyAction，并存储在元素的属性中
+    // 新しい copyAction を作成し、要素の属性に保存します。
     v.copyAction = () => {
       copy(v.nextSibling.textContent)
     }
 
-    // 添加新的监听器
+    // 新しいリスナーを追加する
     v.addEventListener('click', v.copyAction)
   })
 }
